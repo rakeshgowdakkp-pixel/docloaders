@@ -1,11 +1,12 @@
 from docx import Document
 
-content = Document("NewIID.docx")
+content = Document("Sample_word.docx")
 
 text = ""
 
 for para in content.paragraphs :
     text += para.text  + "\n"
     
+
 
 print(text) 
