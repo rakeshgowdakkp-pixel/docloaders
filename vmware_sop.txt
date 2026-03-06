@@ -1,0 +1,51 @@
+VMware Virtual Machine Provisioning Standard Operating Procedure
+
+Purpose:
+This document describes the standard procedure to provision a new virtual machine in the VMware environment. The objective is to ensure consistency, security compliance, and proper resource allocation across all environments.
+
+Scope:
+This SOP applies to all infrastructure administrators responsible for creating, modifying, and managing virtual machines within the enterprise VMware infrastructure. The procedure covers VM deployment, configuration validation, and post-deployment verification.
+
+Prerequisites:
+Before creating a virtual machine, ensure that the request has been approved through ServiceNow. Validate that the requester has provided CPU, memory, storage, operating system, and network requirements. Confirm that sufficient resources are available within the target cluster.
+
+Procedure:
+Login to the vCenter Server using administrator credentials. Navigate to the appropriate data center and select the target cluster where the virtual machine will be deployed. Right-click on the cluster and select the option to create a new virtual machine.
+
+Choose the deployment type as “Create a new virtual machine.” Provide a meaningful naming convention that follows organizational standards. Select the appropriate compatibility level and guest operating system version.
+
+Resource Allocation:
+Assign CPU and memory based on approved request details. Avoid overprovisioning resources as it may impact cluster performance. Ensure CPU reservation policies are followed according to workload criticality.
+
+Storage Configuration:
+Select the appropriate datastore based on available capacity and performance requirements. Thin provisioning should be used unless otherwise specified. Verify datastore latency and free space before proceeding.
+
+Network Configuration:
+Attach the virtual machine to the correct port group or VLAN. Validate network segmentation policies and confirm that the selected network aligns with the application environment such as production, staging, or development.
+
+Operating System Installation:
+Mount the required ISO image and start the virtual machine. Follow operating system installation steps as per vendor guidelines. Ensure hostname, IP address, and domain configurations match approved standards.
+
+Post Deployment Validation:
+After installation, verify VM tools installation and confirm system time synchronization. Perform connectivity checks including ping tests and DNS resolution. Confirm that monitoring agents and security tools are installed successfully.
+
+Snapshot Policy:
+Snapshots should only be created for temporary maintenance activities. Long-term snapshots are not permitted as they may cause datastore performance degradation. Remove snapshots immediately after validation activities are completed.
+
+Backup Configuration:
+Ensure the virtual machine is added to the backup policy within 24 hours of deployment. Validate backup schedules and perform a test restore when required to confirm backup integrity.
+
+Security Compliance:
+Apply operating system patches and security hardening guidelines. Disable unnecessary services and enforce password policies. Confirm endpoint protection agents are active and updated.
+
+Decommission Process:
+When a VM is no longer required, obtain approval before deletion. Take a final backup and archive necessary logs. Remove the VM from monitoring and backup systems before permanent deletion.
+
+Troubleshooting:
+If VM deployment fails, review task and event logs in vCenter. Check datastore availability, network configuration, and permission assignments. Escalate unresolved issues to the infrastructure engineering team.
+
+Documentation:
+Update configuration management database entries with VM details including IP address, owner, environment, and purpose. Accurate documentation ensures operational visibility and audit compliance.
+
+Conclusion:
+Following this SOP ensures standardized VM deployment, improves operational efficiency, and reduces configuration errors across the infrastructure environment.
